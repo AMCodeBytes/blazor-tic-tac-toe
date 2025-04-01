@@ -5,9 +5,13 @@
 
 <h1>Tic-Tac-Toe @(play ? "- Playing - Player "+ @player : "")</h1>
 
+@if (win == true) {
+  <h2>@player WON!</h2>
+}
+
 <div class="container text-center">
   @if (play == true) {
-    <div class="row">
+    <div class="row @(win ? "disabled" : "")">
       <div class="col p-5 clickable border-bottom border-end" @onclick="@(e => onClickSelect(0,0))">
         @board[0,0]
       </div>
@@ -73,31 +77,48 @@
 
   private void onClickSelect(int x, int y)
   {
-    Console.WriteLine(board[x, y]);
-    board[x, y] = player;
+    if (!win) {
+      board[x, y] = player;
 
-    changePlayer();
+      changePlayer();
+    }
   }
 
   private void changePlayer()
   {
-    switch(player)
-    {
-      case "X":
-        player = "O";
-        break;
-      case "O":
-        player = "X";
-        break;
+    // Play is the opposite of the win state
+    win = checkWin();
+
+    // If there was no winner change player
+    if (!win) {
+      switch(player)
+      {
+        case "X":
+          player = "O";
+          break;
+        case "O":
+          player = "X";
+          break;
+      }
     }
+    
   }
 
   private bool checkWin()
   {
     // Check for a row or column win
+    
 
     // Check for diagonal win
+    if (((board[0,0] != "" || board[1,1] != "" || board[2,2] != "") &&
+      (board[0,0] == board[1,1] && board[1,1] == board[2,2]))
+      ||
+      ((board[0,2] != "" || board[1,1] != "" || board[2,0] != "") &&
+      (board[0,2] == board[1,1] && board[1,1] == board[2,0])))
+    {
+      return true;
+    }
 
-    return true;
+    return false;
   }
 }
