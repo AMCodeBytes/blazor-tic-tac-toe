@@ -6,7 +6,7 @@
 <h1>Tic-Tac-Toe @(play ? "- Playing - Player "+ @player : "")</h1>
 
 @if (win == true) {
-  <h2>@player WON!</h2>
+  <h2 class="text-center text-success">Player @player WON!</h2>
 }
 
 <div class="container text-center">
@@ -107,7 +107,16 @@
   private bool checkWin()
   {
     // Check for a row or column win
-    
+    for (int i = 0; i < 3; i++) {
+      if (((board[i,0] != "" || board[i,1] != "" || board[i,2] != "") && 
+      (board[i,0] == board[i,1]) && (board[i,1] == board[i,2]))
+      ||
+			((board[0,i] != "" || board[1,i] != "" || board[2,i] != "") && 
+      (board[0,i] == board[1,i]) && (board[1,i] == board[2,i])))
+      {
+        return true;
+      }
+    }
 
     // Check for diagonal win
     if (((board[0,0] != "" || board[1,1] != "" || board[2,2] != "") &&
