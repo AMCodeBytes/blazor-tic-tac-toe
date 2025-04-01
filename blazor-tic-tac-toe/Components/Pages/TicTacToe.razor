@@ -3,24 +3,42 @@
 
 <PageTitle>Tic-Tac-Toe</PageTitle>
 
-<h1>Tic-Tac-Toe @(play ? "- Playing" : "") @posX @posY</h1>
+<h1>Tic-Tac-Toe @(play ? "- Playing" : "")</h1>
 
 <div class="container text-center">
   @if (play == true) {
     <div class="row">
-      <div class="col p-5 clickable border-bottom border-end" @onclick="@(e => onClickSelect(0,1))">X</div>
-      <div class="col p-5 clickable border-start border-bottom border-end">O</div>
-      <div class="col p-5 clickable border-bottom border-start">X</div>
+      <div class="col p-5 clickable border-bottom border-end" @onclick="@(e => onClickSelect(0,0))">
+        @board[0,0]
+      </div>
+      <div class="col p-5 clickable border-start border-bottom border-end" @onclick="@(e => onClickSelect(0,1))">
+        @board[0,1]
+      </div>
+      <div class="col p-5 clickable border-bottom border-start" @onclick="@(e => onClickSelect(0,2))">
+        @board[0,2]
+      </div>
     </div>
     <div class="row">
-      <div class="col p-5 clickable border-bottom border-top border-end">O</div>
-      <div class="col p-5 clickable border-start border-bottom border-top border-end">X</div>
-      <div class="col p-5 clickable border-start border-bottom border-top">O</div>
+      <div class="col p-5 clickable border-bottom border-top border-end" @onclick="@(e => onClickSelect(1,0))">
+        @board[1,0]
+      </div>
+      <div class="col p-5 clickable border-start border-bottom border-top border-end" @onclick="@(e => onClickSelect(1,1))">
+        @board[1,1]
+      </div>
+      <div class="col p-5 clickable border-start border-bottom border-top" @onclick="@(e => onClickSelect(1,2))">
+        @board[1,2]
+      </div>
     </div>
     <div class="row">
-      <div class="col p-5 clickable border-top border-end">X</div>
-      <div class="col p-5 clickable border-start border-top border-bottom border-end">O</div>
-      <div class="col p-5 clickable border-start border-top">X</div>
+      <div class="col p-5 clickable border-top border-end" @onclick="@(e => onClickSelect(2,0))">
+        @board[2,0]
+      </div>
+      <div class="col p-5 clickable border-start border-top border-bottom border-end" @onclick="@(e => onClickSelect(2,1))">
+        @board[2,1]
+      </div>
+      <div class="col p-5 clickable border-start border-top" @onclick="@(e => onClickSelect(2,2))">
+        @board[2,2]
+      </div>
     </div>
     <div class="row">
       <button class="btn btn-danger" @onclick="onClickQuit">Quit</button>
@@ -34,8 +52,14 @@
 
 @code {
   private bool play = false;
-  private int posX;
-  private int posY;
+  private string[,] board = {{"","",""}, {"","",""}, {"","",""}};
+  private string player = "X";
+  private bool win = false;
+
+  // This will run code when the page has loaded
+  protected override void OnInitialized() {
+    // Console.WriteLine(board);
+  }
 
   private void onClickPlay()
   {
@@ -49,7 +73,31 @@
 
   private void onClickSelect(int x, int y)
   {
-    posX = x;
-    posY = y;
+    Console.WriteLine(board[x, y]);
+    board[x, y] = player;
+
+    changePlayer();
+  }
+
+  private void changePlayer()
+  {
+    switch(player)
+    {
+      case "X":
+        player = "O";
+        break;
+      case "O":
+        player = "X";
+        break;
+    }
+  }
+
+  private bool checkWin()
+  {
+    // Check for a row or column win
+
+    // Check for diagonal win
+
+    return true;
   }
 }
