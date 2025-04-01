@@ -1,0 +1,55 @@
+@page "/tic-tac-toe"
+@rendermode InteractiveServer
+
+<PageTitle>Tic-Tac-Toe</PageTitle>
+
+<h1>Tic-Tac-Toe @(play ? "- Playing" : "") @posX @posY</h1>
+
+<div class="container text-center">
+  @if (play == true) {
+    <div class="row">
+      <div class="col p-5 clickable border-bottom border-end" @onclick="@(e => onClickSelect(0,1))">X</div>
+      <div class="col p-5 clickable border-start border-bottom border-end">O</div>
+      <div class="col p-5 clickable border-bottom border-start">X</div>
+    </div>
+    <div class="row">
+      <div class="col p-5 clickable border-bottom border-top border-end">O</div>
+      <div class="col p-5 clickable border-start border-bottom border-top border-end">X</div>
+      <div class="col p-5 clickable border-start border-bottom border-top">O</div>
+    </div>
+    <div class="row">
+      <div class="col p-5 clickable border-top border-end">X</div>
+      <div class="col p-5 clickable border-start border-top border-bottom border-end">O</div>
+      <div class="col p-5 clickable border-start border-top">X</div>
+    </div>
+    <div class="row">
+      <button class="btn btn-danger" @onclick="onClickQuit">Quit</button>
+    </div>
+  } else {
+    <div class="row">
+      <button class="btn btn-success" @onclick="onClickPlay">Play</button>
+    </div>
+  }
+</div>
+
+@code {
+  private bool play = false;
+  private int posX;
+  private int posY;
+
+  private void onClickPlay()
+  {
+    play = true;
+  }
+
+  private void onClickQuit()
+  {
+    play = false;
+  }
+
+  private void onClickSelect(int x, int y)
+  {
+    posX = x;
+    posY = y;
+  }
+}

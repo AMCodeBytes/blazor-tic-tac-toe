@@ -16,7 +16,6 @@ d:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\scopedcss\C
 d:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
 d:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\scopedcss\bundle\blazor-tic-tac-toe.styles.css
 d:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\scopedcss\projectbundle\blazor-tic-tac-toe.bundle.scp.css
-d:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\compressed\lwfvbcki2i-khy4lop6wu.gz
 d:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\compressed\fje4mrlsvc-bqjiyaj88i.gz
 d:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\compressed\2qzxwtce7g-c2jlpeoesf.gz
 d:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\compressed\wt3k9qifbw-erw9l3u2r3.gz
@@ -77,3 +76,5 @@ d:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\refint\blaz
 d:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\blazor-tic-tac-toe.pdb
 d:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\blazor-tic-tac-toe.genruntimeconfig.cache
 d:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\ref\blazor-tic-tac-toe.dll
+D:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\blazor-tic-tac-toe.sourcelink.json
+D:\Work\repos\blazor-tic-tac-toe\blazor-tic-tac-toe\obj\Debug\net9.0\compressed\lwfvbcki2i-76es6mhbzg.gz
