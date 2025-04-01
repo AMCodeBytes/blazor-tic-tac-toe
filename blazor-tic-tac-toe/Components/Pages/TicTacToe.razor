@@ -44,9 +44,15 @@
         @board[2,2]
       </div>
     </div>
-    <div class="row">
-      <button class="btn btn-danger" @onclick="onClickQuit">Quit</button>
-    </div>
+    @if (win) {
+      <div class="row">
+        <button class="btn btn-primary" @onclick="onClickRestart">Restart</button>
+      </div>
+    } else {
+      <div class="row">
+        <button class="btn btn-danger" @onclick="onClickQuit">Quit</button>
+      </div>
+    }
   } else {
     <div class="row">
       <button class="btn btn-success" @onclick="onClickPlay">Play</button>
@@ -74,6 +80,15 @@
   {
     play = false;
   }
+
+	private void onClickRestart()
+	{
+		// Reset the game state
+		board = new string[,] {{"","",""}, {"","",""}, {"","",""}};
+		play = true;
+		player = "X";
+		win = false;
+	}
 
   private void onClickSelect(int x, int y)
   {
