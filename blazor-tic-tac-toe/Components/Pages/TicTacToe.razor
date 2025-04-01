@@ -3,10 +3,14 @@
 
 <PageTitle>Tic-Tac-Toe</PageTitle>
 
-<h1>Tic-Tac-Toe @(play ? "- Playing - Player "+ @player : "")</h1>
+<h1>Tic-Tac-Toe @(play ? "- Playing - Player "+ @player : "") - Moves @moves</h1>
 
-@if (win == true) {
-  <h2 class="text-center text-success">Player @player WON!</h2>
+@if (win) {
+	@if (draw) {
+		<h2 class="text-center text-success">DRAW!</h2>
+	} else {
+		<h2 class="text-center text-success">Player @player WON!</h2>
+	}
 }
 
 <div class="container text-center">
@@ -65,6 +69,8 @@
   private string[,] board = {{"","",""}, {"","",""}, {"","",""}};
   private string player = "X";
   private bool win = false;
+	private bool draw = false;
+	private int moves = 0;
 
   // This will run code when the page has loaded
   protected override void OnInitialized() {
@@ -79,15 +85,12 @@
   private void onClickQuit()
   {
     play = false;
+		reset();
   }
 
 	private void onClickRestart()
 	{
-		// Reset the game state
-		board = new string[,] {{"","",""}, {"","",""}, {"","",""}};
-		play = true;
-		player = "X";
-		win = false;
+		reset();
 	}
 
   private void onClickSelect(int x, int y)
@@ -101,6 +104,8 @@
 
   private void changePlayer()
   {
+		moves++;
+
     // Play is the opposite of the win state
     win = checkWin();
 
@@ -118,6 +123,17 @@
     }
     
   }
+
+	private void reset()
+	{
+		// Reset the game state
+		board = new string[,] {{"","",""}, {"","",""}, {"","",""}};
+		play = true;
+		player = "X";
+		win = false;
+		draw = false;
+		moves = 0;
+	}
 
   private bool checkWin()
   {
@@ -142,6 +158,11 @@
     {
       return true;
     }
+
+		if (moves == 9) {
+			draw = true;
+			return true;
+		}
 
     return false;
   }
