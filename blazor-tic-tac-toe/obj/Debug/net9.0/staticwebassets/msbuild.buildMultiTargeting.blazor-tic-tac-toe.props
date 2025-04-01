@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\blazor-tic-tac-toe.props" />
+</Project>
